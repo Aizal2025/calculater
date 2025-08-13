@@ -1,0 +1,32 @@
+{
+font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #0128
+    }
+    #chatbox {
+      width: 500px;
+      margin: auto;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      height: 400px;
+      overflow-y: auto;
+    }
+    .message {
+      margin: 10px 0;
+    }
+    .user { text-align: right; color: blue; }
+    .bot  { text-align: left;  color: green; }
+    #inputArea {
+      width: 500px;
+      margin: auto;
+      margin-top: 10px;
+      display: flex;
+    }
+    #userInput {
+      flex: 1;
+      padding: 10px;
+    }
+    #sendBtn {
+      padding: 10px 20px;
+    }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Calculator</title>
+  <style>
+   {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #0128
+    }
+    #chatbox {
+      width: 500px;
+      margin: auto;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;ssssss
+      height: 400px;
+      overflow-y: auto;
+    }
+    .message {
+      margin: 10px 0;
+    }
+    .user { text-align: right; color: blue; }
+    .bot  { text-align: left;  color: green; }
+    #inputArea {
+      width: 500px;
+      margin: auto;
+      margin-top: 10px;
+      display: flex;
+    }
+    #userInput {
+      flex: 1;
+      padding: 10px;
+    }
+    #sendBtn {
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">AI Calculator Chatbot</h2>
+
+  <div id="chatbox"></div>
+
+  <div id="inputArea">
+    <input type="text" id="userInput" placeholder="Type a math problem like 5 + 4 * 2" />
+    <button id="sendBtn" onclick="calculate()">Send</button>
+  </div>
+
+  <p id="demo" style="margin-left:72%;margin-top:10%;"></p>
+
+  <script>
+    const chatbox = document.getElementById("chatbox");
+
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = `message ${sender}`;
+      div.textContent = text;
+      chatbox.appendChild(div);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function calculate() {
+      const input = document.getElementById("userInput");
+      const expression = input.value.trim();
+
+      if (!expression) return;
+
+      addMessage("You: " + expression, "user");
+      input.value = "";
+
+      try {
+        // Evaluate the math expression
+        const result = eval(expression); // Not safe in real apps!
+        if (isNaN(result)) {
+          throw new Error();
+        }
+        addMessage("Bot: Answer is " + result, "bot");
+      } catch (error) {
+        addMessage("Bot: Sorry, I couldn't understand that. Try math like 8 + 3 * 2", "bot");
+      }
+    }
+
+
+    const d = new Date();
+document.getElementById("demo").innerHTML = d;
+  </script>
+
+</body>
+</html>
